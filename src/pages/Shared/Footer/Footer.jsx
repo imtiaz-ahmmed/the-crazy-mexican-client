@@ -9,7 +9,7 @@ const Footer = () => {
             The Crazy Mexican
           </a>
           <p className="font-bold">
-            The Crazy Mexican Food Industries Ltd. <br />
+            Crazy Mexican Food Industries Ltd. <br />
             Providing reliable food since 1992
           </p>
           <p>Copyright © 2023 - All right reserved</p>

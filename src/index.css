@@ -4,3 +4,11 @@
 /* *{
     border: 1px solid red;
 } */
+
+.active{
+    @apply text-yellow-700 font-bold bg-black
+  }
+  
+  .default{
+    @apply text-white
+  }

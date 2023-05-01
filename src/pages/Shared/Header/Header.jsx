@@ -1,9 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
-      <div className="navbar bg-black p-4">
+      <div className="navbar bg-black px-8 py-4">
         <div className="dropdown start-auto">
           <label tabIndex={0} className="btn bg-yellow-700 lg:hidden">
             <svg
@@ -34,7 +35,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-center mx-12 lg:mx-0 lg:navbar-start">
+        <div className="navbar-center mx-8 lg:mx-0 lg:navbar-start">
           <a className=" normal-case text-3xl font-bold text-yellow-700">
             The Crazy Mexican
           </a>
@@ -42,10 +43,20 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="text-white">Home</a>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <a className="text-white">Blog</a>
+              <NavLink
+                to="/blog"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>
