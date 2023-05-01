@@ -32,12 +32,9 @@ const Header = () => {
             <li>
               <a className="text-white">Blog</a>
             </li>
-            <div className="navbar-end ">
-              <a className="btn bg-yellow-700">Login</a>
-            </div>
           </ul>
         </div>
-        <div className="mx-auto lg:navbar-start">
+        <div className="navbar-center mx-12 lg:mx-0 lg:navbar-start">
           <a className=" normal-case text-3xl font-bold text-yellow-700">
             The Crazy Mexican
           </a>
@@ -52,7 +49,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end hidden lg:block">
+        <div className="navbar-end ">
           <a className="btn bg-yellow-700">Login</a>
         </div>
       </div>
