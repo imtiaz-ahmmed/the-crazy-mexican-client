@@ -1,8 +1,9 @@
 import React from "react";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const SingleChef = ({ chef }) => {
-  const { name, picture, yearsExperience, numRecipes, likes } = chef;
+  const { id, name, picture, yearsExperience, numRecipes, likes } = chef;
 
   return (
     <div>
@@ -25,11 +26,13 @@ const SingleChef = ({ chef }) => {
             Number of Recipes
           </p>
           <p>
-            <FcLike />{" "}
+            <FcLike />
             <span className="text-yellow-700 font-bold"> {likes}</span>
           </p>
           <div className="card-actions">
-            <button className="btn bg-yellow-700">View Recipes</button>
+            <Link to={`/recipe/${id}`}>
+              <button className="btn bg-yellow-700">View Recipes</button>
+            </Link>
           </div>
         </div>
       </div>

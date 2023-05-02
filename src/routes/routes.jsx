@@ -5,6 +5,9 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
 import Blog from "../pages/Blog/Blog";
 
+import RecipeDetails from "../pages/RecipeDetails/RecipeDetails";
+import Recipe from "../layouts/Recipe";
+
 const route = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +21,17 @@ const route = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+    ],
+  },
+  {
+    path: "/recipe",
+    element: <Recipe></Recipe>,
+    children: [
+      {
+        path: "/recipe/:id",
+        element: <RecipeDetails></RecipeDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/recipe/${params}`),
       },
     ],
   },
