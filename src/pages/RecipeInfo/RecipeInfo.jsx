@@ -28,7 +28,7 @@ const RecipeInfo = ({ recipe }) => {
 
         <h2 className="mb-2 text-xl font-bold ">Cooking Method:</h2>
         <p className="text-justify">{cooking_method}</p>
-        <h2 className="mb-2 text-xl font-bold mt-2">
+        <h2 className="mb-6 text-xl font-bold mt-2">
           Rating: <span className="text-yellow-700"> {rating}</span>
         </h2>
         <button
