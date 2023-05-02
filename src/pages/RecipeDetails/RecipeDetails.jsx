@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FcLike } from "react-icons/fc";
+import RecipeInfo from "../RecipeInfo/RecipeInfo";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const RecipeDetails = () => {
       <h1 className="text-center text-yellow-700 font-bold text-5xl p-8 bg-black">
         Welcome to Chef Profile{" "}
       </h1>
-      <div className="hero min-h-screen bg-gray-200-200">
+      <div className="hero min-h-screen bg-gray-200">
         <div className="hero-content flex-col gap-14 lg:flex-row bg-gray-100 rounded-lg p-8  ">
           <img className="h-96 rounded-md" src={recipes.picture} />
           <div>
@@ -37,11 +38,17 @@ const RecipeDetails = () => {
           </div>
         </div>
       </div>
-
-      <div>
-        {recipes.recipes.map((recipe) => {
-          console.log(recipe);
-        })}
+      <h2 className="text-center text-yellow-700 text-4xl font-bold mt-8 mb-4">
+        Top Recipes
+      </h2>
+      <hr />
+      <div className="flex flex-col lg:flex-row gap-8 justify-between p-12 ">
+        {recipes.recipes &&
+          recipes.recipes.map((recipe) => {
+            return (
+              <RecipeInfo key={recipe.recipeID} recipe={recipe}></RecipeInfo>
+            );
+          })}
       </div>
     </div>
   );
