@@ -7,6 +7,9 @@ import Blog from "../pages/Blog/Blog";
 
 import RecipeDetails from "../pages/RecipeDetails/RecipeDetails";
 import Recipe from "../layouts/Recipe";
+import AboutUS from "../pages/AboutUs/AboutUS";
+import Login from "../pages/Authentication/Login";
+import Register from "../pages/Authentication/Register";
 
 const route = createBrowserRouter([
   {
@@ -21,6 +24,18 @@ const route = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/about",
+        element: <AboutUS></AboutUS>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },
