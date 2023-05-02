@@ -42,7 +42,7 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
+            <li className="text-lg">
               <NavLink
                 to="/"
                 className={({ isActive }) => (isActive ? "active" : "default")}
@@ -50,7 +50,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className="text-lg">
               <NavLink
                 to="/blog"
                 className={({ isActive }) => (isActive ? "active" : "default")}
