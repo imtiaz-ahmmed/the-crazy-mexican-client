@@ -10,6 +10,7 @@ import Recipe from "../layouts/Recipe";
 import AboutUS from "../pages/AboutUs/AboutUS";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
+import PrivateRoute from "./privateRoute";
 
 const route = createBrowserRouter([
   {
@@ -41,13 +42,16 @@ const route = createBrowserRouter([
   },
   {
     path: "/recipe",
-    element: <Recipe></Recipe>,
+    element: (
+      <PrivateRoute>
+        <Recipe></Recipe>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/recipe/:id",
         element: <RecipeDetails></RecipeDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/recipe/${params}`),
       },
     ],
   },
