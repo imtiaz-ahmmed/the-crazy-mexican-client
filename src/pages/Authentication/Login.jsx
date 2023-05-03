@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        //navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="flex justify-center p-12">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
+        <form onSubmit={handleLogin} className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
           </h5>
           <div>
-            <label
-              for="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your email
             </label>
             <input
@@ -25,10 +44,7 @@ const Login = () => {
             />
           </div>
           <div>
-            <label
-              for="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your password
             </label>
             <input
@@ -48,22 +64,15 @@ const Login = () => {
                   type="checkbox"
                   value=""
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                  required
                 />
               </div>
-              <label
-                for="remember"
-                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
+              <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Remember me
               </label>
             </div>
-            <a
-              href="#"
-              className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-            >
+            <span className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">
               Lost Password?
-            </a>
+            </span>
           </div>
           <button
             type="submit"
@@ -76,7 +85,7 @@ const Login = () => {
             className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 w-full"
           >
             <svg
-              class="w-4 h-4 mr-2 -ml-1"
+              className="w-4 h-4 mr-2 -ml-1"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -98,7 +107,7 @@ const Login = () => {
             className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center w-full justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
           >
             <svg
-              class="w-4 h-4 mr-2 -ml-1"
+              className="w-4 h-4 mr-2 -ml-1"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -115,13 +124,12 @@ const Login = () => {
             Sign in with Github
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{" "}
-            <a
-              href="#"
-              className="text-blue-700 hover:underline dark:text-blue-500"
-            >
-              Create account
-            </a>
+            Not registered?
+            <Link to={"/register"}>
+              <span className="text-blue-700 hover:underline dark:text-blue-500">
+                Create account
+              </span>
+            </Link>
           </div>
         </form>
       </div>
