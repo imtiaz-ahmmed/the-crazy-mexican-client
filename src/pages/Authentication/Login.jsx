@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
@@ -14,6 +14,19 @@ const Login = () => {
     console.log(email, password);
 
     signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        //navigate(from, { replace: true });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -83,6 +96,7 @@ const Login = () => {
             Login to your account
           </button>
           <button
+            onClick={handleGoogleSignIn}
             type="button"
             className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 w-full"
           >
