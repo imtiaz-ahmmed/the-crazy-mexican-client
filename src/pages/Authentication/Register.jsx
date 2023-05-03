@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -16,9 +17,12 @@ const Register = () => {
     createUser(email, password)
       .then(() => {
         updateUser(name, photo);
+        setRegisterError("");
       })
       .catch((error) => {
-        console.log(error.message);
+        const errorMessage = error.message;
+        setRegisterError(errorMessage);
+        console.log(errorMessage);
       });
   };
 
@@ -81,6 +85,9 @@ const Register = () => {
               required
             />
           </div>
+          <p className="text-red-600 ">
+            <small>{registerError}</small>
+          </p>
           <div className="flex items-start">
             <div className="flex items-start">
               <div className="flex items-center h-5">

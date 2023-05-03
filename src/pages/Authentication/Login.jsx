@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, githubLogIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,6 +17,23 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        setLoginError("");
+        console.log(loggedUser);
+        form.reset;
+        //navigate(from, { replace: true });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setLoginError(errorMessage);
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
         console.log(loggedUser);
         //navigate(from, { replace: true });
         navigate("/");
@@ -24,9 +42,8 @@ const Login = () => {
         console.log(error);
       });
   };
-
-  const handleGoogleSignIn = () => {
-    googleSignIn()
+  const handleGitHubSignIn = () => {
+    githubLogIn()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -70,6 +87,9 @@ const Login = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
+            <p className="text-red-600 ">
+              <small>{loginError}</small>
+            </p>
           </div>
           <div className="flex items-start">
             <div className="flex items-start">
@@ -119,6 +139,7 @@ const Login = () => {
           </button>
 
           <button
+            onClick={handleGitHubSignIn}
             type="button"
             className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center w-full justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
           >

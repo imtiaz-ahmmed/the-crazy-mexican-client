@@ -9,14 +9,11 @@ const SingleChef = ({ chef }) => {
   return (
     <div>
       <div className="card w-96 bg-gray-200 shadow-xl">
-        {/* <figure className="px-10 pt-10">
-          <img src={picture} alt="chef-image" className="rounded-xl h-40" />
-        </figure> */}
-        <LazyLoad offset={300}>
-          <figure className="px-10 pt-10">
+        <figure className="px-10 pt-10">
+          <LazyLoad offsetVertical={1000}>
             <img src={picture} alt="chef-image" className="rounded-xl h-40" />
-          </figure>
-        </LazyLoad>
+          </LazyLoad>
+        </figure>
 
         <div className="card-body items-center text-center">
           <h2 className="card-title text-yellow-700 fond-bold text-2xl">
