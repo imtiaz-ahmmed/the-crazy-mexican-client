@@ -20,6 +20,7 @@ const Login = () => {
         setLoginError("");
         console.log(loggedUser);
         form.reset;
+        alert("Login Successful");
         //navigate(from, { replace: true });
         navigate("/");
       })

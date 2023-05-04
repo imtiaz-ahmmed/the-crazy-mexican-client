@@ -8,7 +8,7 @@ const RecipeDetails = () => {
   const { id } = useParams();
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/recipe/${id}`)
+    fetch(`https://the-crazy-mexican-server.vercel.app/recipe/${id}`)
       .then((res) => res.json())
       .then((data) => setRecipes(data))
       .catch((error) => console.error(error));
