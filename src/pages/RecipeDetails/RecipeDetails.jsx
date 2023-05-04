@@ -16,7 +16,7 @@ const RecipeDetails = () => {
 
   return (
     <div>
-      <h1 className="text-center text-yellow-700 font-bold text-5xl p-8 bg-black">
+      <h1 className="text-center text-yellow-700 font-bold text-5xl p-8 bg-slate-400">
         Welcome to Chef Profile
       </h1>
 

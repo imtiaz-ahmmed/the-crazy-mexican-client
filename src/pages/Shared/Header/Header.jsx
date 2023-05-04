@@ -49,7 +49,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-center mx-8 lg:mx-0 lg:navbar-start">
-          <a className=" normal-case text-3xl font-bold text-yellow-700">
+          <a className=" normal-case text-xl lg:text-3xl font-bold text-yellow-700">
             The Crazy Mexican
           </a>
         </div>
@@ -85,11 +85,11 @@ const Header = () => {
           {user ? (
             <div className="flex gap-2 items-center ">
               <img
-                className="h-20 w-20 rounded-full "
-                src={user.photoURL}
+                className="h-12 w-12 lg:h-20 lg:w-20 rounded-full "
+                src={user.photoURL ? user.photoURL : ""}
                 alt=""
                 data-tooltip-id="user-name"
-                data-tooltip-content={user.displayName}
+                data-tooltip-content={user.displayName ? user.displayName : ""}
               />
               <Tooltip id="user-name" />
               <button onClick={handleLogOut} className="btn bg-yellow-700">
