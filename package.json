@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
+    "@progress/kendo-react-pdf": "^5.13.1",
     "@tippyjs/react": "^4.2.6",
     "daisyui": "^2.51.6",
     "firebase": "^9.21.0",
